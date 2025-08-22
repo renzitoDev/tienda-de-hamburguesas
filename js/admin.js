@@ -127,13 +127,28 @@ async function verDetallePedido(pedidoId) {
       <hr>
       <b>Productos pedidos:</b>
       <ul>`;
+       // ----- 🔽 AGREGA ESTE BLOQUE AQUÍ PARA EL COMENTARIO/IMAGEN -----
+      let descripcionFinal = pedido.descripcion ? pedido.descripcion.replace(/\n/g, "<br>") : "-";
+        // Busca si tiene base64:
+      const match = descripcionFinal.match(/data:image\/[a-z]+;base64,[^\s<]+/);
+      if(match){
+        descripcionFinal += '<br><img src="'+match[0]+'" style="max-width:220px;display:block;margin:10px auto;" />';
+     }
+      html += `<b>Comentario:</b> ${descripcionFinal}<br>`;
+          // ----- 🔼 FIN BLOQUE ------
+
+        html += `<b>Fecha:</b> ${pedido.fecha ? pedido.fecha.substring(0,16).replace("T", " ") : ""}<br>
+           <hr>
+            <b>Productos pedidos:</b>
+           <ul>`;
+
     if(Array.isArray(detalles) && detalles.length>0){
       detalles.forEach(d=>{
         html += `<li><img src="${d.imagen}" alt="" style="width:38px;border-radius:4px;vertical-align:middle"> <b>${d.producto_nombre}</b> x ${d.cantidad} &nbsp; <span style="color:#5a5a5a">($${parseFloat(d.precio).toLocaleString('es-CO')})</span></li>`;
-      });
+    });
     } else {
-      html += "<li>No hay productos.</li>";
-    }
+    html += "<li>No hay productos.</li>";
+  }
     html += "</ul>";
     detalleDiv.innerHTML = html;
   } catch {

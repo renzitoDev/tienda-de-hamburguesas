@@ -120,11 +120,32 @@ body { font-family: 'Roboto Slab', serif; line-height: 1.5; color: #222; }
 .order-btn:hover { background: #e0a806; }
 .card-precio { font-weight:bold; font-size:18px; color:#161616; margin:10px 0 0 0;}
  
-#carrito, #checkout { background: #fff; border-radius: 13px; box-shadow: 0 4px 20px #0001; padding: 22px 25px 40px 25px; }
-#carrito h2, #checkout h2 { margin-bottom: 22px; color:#ffc800; text-align:center;}
-#carrito-lista table { width:100%; margin-bottom: 12px; border-collapse:collapse;}
-#carrito-lista th, #carrito-lista td { border-bottom:1px solid #eee;padding:7px;}
-.eliminar-prod { color:#fff; background:#df4b4b; border:none; padding:3px 13px; border-radius:5px; cursor:pointer;}
+#carrito, #checkout { 
+  background: #fff; 
+  border-radius: 13px; 
+  box-shadow: 0 4px 20px #0001; 
+  padding: 22px 25px 40px 25px; 
+}
+#carrito h2, #checkout h2 { 
+  margin-bottom: 22px; 
+  color:#ffc800; 
+  text-align:center;}
+#carrito-lista table { 
+  width:100%; 
+  margin-bottom: 12px; 
+  border-collapse:collapse;
+}
+#carrito-lista th, #carrito-lista td {
+  border-bottom:1px solid #eee;
+  padding:7px;
+}
+.eliminar-prod { 
+  color:#fff; 
+  background:#df4b4b; 
+  border:none; padding:3px 13px; 
+  border-radius:5px; 
+  cursor:pointer;
+}
 #vaciar-carrito { background: #ffc800; border:none; padding: 8px 16px; border-radius:7px; font-weight:bold;cursor:pointer;}
 #ir-checkout { background: #ffc800; border:none; padding: 8px 16px; border-radius:7px; font-weight:bold;cursor:pointer;}
 

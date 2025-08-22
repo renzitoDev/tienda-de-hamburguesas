@@ -7,6 +7,25 @@ function eliminarProdCart(id) {
   saveCart(cart); renderCarrito();
 }
 
+// Haz funciones GLOBALES con window. para poder llamarlas por onclick
+window.sumarCantidad = function(id){
+  let cart = getCart();
+  let idx = cart.findIndex(p => p.id === id);
+  if(idx > -1){
+    cart[idx].cantidad = (cart[idx].cantidad||1) + 1;
+    saveCart(cart); renderCarrito();
+  }
+}
+window.restarCantidad = function(id){
+  let cart = getCart();
+  let idx = cart.findIndex(p => p.id === id);
+  if(idx > -1 && cart[idx].cantidad > 1){
+    cart[idx].cantidad--;
+    saveCart(cart); renderCarrito();
+  }
+}
+window.eliminarProdCart = eliminarProdCart;
+
 function renderCarrito() {
   const wrapper = document.getElementById('carrito-lista');
   const totalDiv = document.getElementById('total-pagar');
@@ -19,19 +38,24 @@ function renderCarrito() {
     return;
   }
   let html = `<table>
-    <thead><tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th><th></th></tr></thead><tbody>`;
+    <thead><tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+      <th>Subtotal</th>
+      <th></th></tr></thead><tbody>`;
   let total = 0;
-  cart.forEach((p,i) => {
+  cart.forEach(p => {
     html += `<tr>
       <td>${p.nombre}</td>
       <td>
-        <button class="btn-cantidad" onclick="restarCantidad(${p.id})">-</button>
+        <button type="button" class="btn-cantidad" onclick="restarCantidad(${p.id})">-</button>
         <span style="padding:0 8px">${p.cantidad}</span>
-        <button class="btn-cantidad" onclick="sumarCantidad(${p.id})">+</button>
+        <button type="button" class="btn-cantidad" onclick="sumarCantidad(${p.id})">+</button>
       </td>
       <td>$${parseFloat(p.precio).toLocaleString('es-CO')}</td>
       <td>$${(p.precio*p.cantidad).toLocaleString('es-CO')}</td>
-      <td><button class="eliminar-prod" onclick="eliminarProdCart(${p.id})">x</button></td>
+      <td><button type="button" class="eliminar-prod" onclick="eliminarProdCart(${p.id})">x</button></td>
     </tr>`;
     total += p.precio * p.cantidad;
   });
@@ -41,24 +65,12 @@ function renderCarrito() {
   document.getElementById("ir-checkout").style.display = "inline-block";
 }
 
-window.sumarCantidad = function(id){
-  let cart = getCart();
-  let idx = cart.findIndex(p => p.id === id);
-  if(idx > -1) cart[idx].cantidad++;
-  saveCart(cart); renderCarrito();
-}
-window.restarCantidad = function(id){
-  let cart = getCart();
-  let idx = cart.findIndex(p => p.id === id);
-  if(idx > -1 && cart[idx].cantidad > 1){
-    cart[idx].cantidad--;
-    saveCart(cart); renderCarrito();
-  }
-}
-
+// Hacemos funciones globales
+window.eliminarProdCart = eliminarProdCart;
+window.sumarCantidad = sumarCantidad;
+window.restarCantidad = restarCantidad;
 
 window.eliminarProdCart = eliminarProdCart;
-
 window.addEventListener('DOMContentLoaded', function(){
   renderCarrito();
   document.getElementById("ir-checkout").onclick = function(){

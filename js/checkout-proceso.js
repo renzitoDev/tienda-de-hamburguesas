@@ -2,7 +2,6 @@ const BASE_URL = '/backend-apicrud/index.php?url=';
 
 // ============ UTILIDADES DE CARRITO ============
 function getCart() { return JSON.parse(localStorage.getItem('cart')) || []; }
-function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
 function clearCart() { localStorage.removeItem('cart'); }
 
 // ============ Renderiza productos resumen =============
@@ -65,10 +64,10 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
-// ============ ENVÍO DEL PEDIDO =============
-document.querySelector('.place-order-btn').addEventListener('click', async function(e){
+// ============ ENVÍO DEL PEDIDO CORRECTO POR SUBMIT ============
+document.querySelector('.checkout-form').addEventListener('submit', async function(e){
   e.preventDefault();
-  const form = document.querySelector('.checkout-form');
+  const form = this;
   const nombres = form.querySelector('input[name="f-name"]').value.trim();
   const apellidos = form.querySelector('input[name="l-name"]').value.trim();
   const email = form.querySelector('input[name="email"]').value.trim();
@@ -81,8 +80,7 @@ document.querySelector('.place-order-btn').addEventListener('click', async funct
     alert('Completa todos los datos requeridos.');
     return;
   }
-
-  // Se asegura cargar los totales
+  // Calcula totales
   const valores = calcularTotal(getCart().reduce((a,p)=>a+p.precio*p.cantidad,0));
   const productos = getCart().map(prod => ({
     id_producto: prod.id,
@@ -90,9 +88,9 @@ document.querySelector('.place-order-btn').addEventListener('click', async funct
     cantidad: prod.cantidad
   }));
 
-  // 📸 Si método Transferencia, obtiene la imagen
+  // Si método Transferencia, adjunta imagen
   let comprobanteData = null;
-  if(valores.metodo_pago==='Transferencia'){
+  if(valores.metodo_pago === 'Transferencia'){
     const fileInput = document.getElementById('comprobanteTransferInput');
     if(!fileInput.files.length){
       alert("Adjunta la foto del comprobante de transferencia.");
@@ -102,7 +100,7 @@ document.querySelector('.place-order-btn').addEventListener('click', async funct
     descripcion += "\n[comprobante]:\n" + comprobanteData;
   }
 
-  // == 1. Crea cliente
+  // 1. Crea cliente
   let id_cliente;
   try {
     const clienteRes = await fetch(BASE_URL + 'clientes', {
@@ -126,7 +124,7 @@ document.querySelector('.place-order-btn').addEventListener('click', async funct
     return;
   }
 
-  // == 2. Crea pedido
+  // 2. Crea pedido
   try {
     const pedidoRes = await fetch(BASE_URL + 'pedidos', {
       method: 'POST',
@@ -148,6 +146,7 @@ document.querySelector('.place-order-btn').addEventListener('click', async funct
     alert('Error registrando tu pedido. Intenta más tarde. '+err);
   }
 });
+
 
 // ============ BASE64 DE ARCHIVO ============
 function toBase64(file) {
