@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Administrador - Hamburger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+</head>
+<body>
+  <section id="admin-login-section">
+    <h2>Login Administrador</h2>
+    <form id="admin-login-form" autocomplete="off">
+      <input type="text" placeholder="Usuario" id="admin-usuario" required />
+      <input type="password" placeholder="Contraseña" id="admin-password" required />
+      <button type="submit">Ingresar</button>
+    </form>
+    <div id="admin-login-message"></div>
+  </section>
+
+  <section id="admin-panel-section" style="display: none;">
+    <header style="display:flex;justify-content:space-between;align-items:center">
+      <h2>Panel de Pedidos</h2>
+      <button id="logout-admin">Cerrar sesión</button>
+    </header>
+    <div id="admin-pedidos-lista"></div>
+    <div id="admin-detalle-pedido"></div>
+  </section>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

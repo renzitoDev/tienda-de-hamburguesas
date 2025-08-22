@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger</title>
+  <link rel="shortcut icon" type="image/png" href="./images/logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <a href="#" id="logo"><img src="./images/logo.png" alt="" width="30px">BUR<span>GER</span></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active" id="first-child">Home</a></li>
+    <li><a href="#">Burger</a></li>
+    <li class="dropdown">
+      <a href="#">Other <i class="fa-solid fa-chevron-down"></i></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Pizza</a></li>
+        <li><a href="#">Fries</a></li>
+        <li><a href="#">Fried Chicken</a></li>
+      </ul>
+    </li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="admin.html" title="Panel Admin" style="color:inherit">
+  <i class="fa-regular fa-user"></i>
+</a>
+
+    <a href="cart.html" class="carrito" title="Ver Carrito">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="contar-pro">0</span>
+    </a>
+
+  </div>
+</nav>
+<section id="carrito" style="margin: 60px auto 0; max-width: 600px;">
+  <h2>Tu Carrito</h2>
+  <div id="carrito-lista"></div>
+  <div id="total-pagar"></div>
+  <button id="ir-checkout" style="margin-top:17px;">Finalizar Pedido</button>
+  <button id="vaciar-carrito">Vaciar carrito</button>
+</section>
+
+<section id="checkout" style="margin-top:50px; max-width:600px;">
+  <h2>Finaliza tu pedido</h2>
+  <form id="checkout-form" autocomplete="off">
+    <div class="field-group">
+      <label>Nombre*</label><input type="text" id="nombre" required>
+      <label>Apellido*</label><input type="text" id="apellido" required>
+    </div>
+    <div class="field-group">
+      <label>Email*</label><input type="email" id="email" required>
+      <label>Celular*</label><input type="text" id="celular" maxlength="12" required>
+    </div>
+    <div class="field-group">
+      <label>Dirección*</label><input type="text" id="direccion" required>
+      <label>Detalle dirección</label><input type="text" id="direccion2">
+    </div>
+    <div class="field-group">
+      <label>Comentario/Mensaje</label><textarea id="descripcion" rows="2"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Método de pago*</label>
+      <select id="metodo_pago" required>
+        <option value="">Selecciona...</option>
+        <option value="Contraentrega">Efectivo en entrega</option>
+        <option value="Transferencia">Transferencia bancaria</option>
+        <option value="PSE">Pago con datafono presencial</option>
+      </select>
+    </div>
+    <div class="field-group" id="transfer-file-field" style="display:none;">
+      <label>Comprobante de Transferencia</label>
+      <input type="file" id="comprobante_img" accept="image/*">
+      <small>Adjunta una foto clara del comprobante.</small>
+    </div>
+    <button type="submit" id="btn-finalizar-pedido">Realizar Pedido</button>
+  </form>
+  <div id="checkout-message"></div>
+</section>
+<script src="js/checkout.js"></script>
+  <script src="js/cart.js"></script>
+
+</body>
+</html>
+

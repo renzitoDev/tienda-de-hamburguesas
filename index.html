@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger</title>
+  <link rel="shortcut icon" type="image/png" href="./images/logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <a href="#" id="logo"><img src="./images/logo.png" alt="" width="30px">BUR<span>GER</span></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active" id="first-child">Home</a></li>
+    <li><a href="#">Burger</a></li>
+    <li class="dropdown">
+      <a href="#">Other <i class="fa-solid fa-chevron-down"></i></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Pizza</a></li>
+        <li><a href="#">Fries</a></li>
+        <li><a href="#">Fried Chicken</a></li>
+      </ul>
+    </li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="admin.html" title="Panel Admin" style="color:inherit">
+      <i class="fa-regular fa-user"></i>
+    </a>
+    <a href="cart.html" class="carrito" title="Ver Carrito">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="contar-pro">0</span>
+    </a>
+
+  </div>
+</nav>
+
+<!-- HOME -->
+<section class="home-section">
+  <div class="home">
+    <div class="content">
+      <h1>Super Delicious<br> <span>Burger</span></h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, iste!</p>
+      <div id="btn"><button>Order Now</button> <span>$100.50</span></div>
+    </div>
+    <div class="img">
+      <img src="./images/burger.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS (Top Icons) -->
+<section id="top-icons">
+  <h1>OFFERS</h1>
+  <div class="offers-grid">
+    <div class="offer-card">
+      <img src="./images/offer1.png" alt=""><h3>Burger 50% off</h3>
+    </div>
+    <div class="offer-card">
+      <img src="./images/offer2.png" alt=""><h3>Free Delivery</h3>
+    </div>
+    <div class="offer-card">
+      <img src="./images/offer3.png" alt=""><h3>Burger free fries</h3>
+    </div>
+    <div class="offer-card">
+      <img src="./images/offer4.png" alt=""><h3>Burger with free cold drink</h3>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS ESTÁTICAS (NO TOCAR) -->
+<section id="cards-inicio">
+  <div class="cards-row">
+    <div class="card">
+      <img src="./images/cards1.png" alt="Hamburger">
+      <div class="card-img-overlay">
+        <h3>HamBurger</h3>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button class="order-btn">Order Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/cards2.png" alt="Pizza">
+      <div class="card-img-overlay">
+        <h3>Pizza</h3>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button class="order-btn">Order Now</button>
+      </div>
+    </div>
+  </div>
+  <div class="cards-row" style="margin-top: 30px;">
+    <div class="card">
+      <img src="./images/cards3.png" alt="Italian pizza">
+      <div class="card-img-overlay">
+        <h3>Italian pizza</h3>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button class="order-btn">Order Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/cards4.png" alt="Fried Chicken">
+      <div class="card-img-overlay">
+        <h3>Fried Chicken</h3>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button class="order-btn">Order Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/cards5.png" alt="Chesse Burger">
+      <div class="card-img-overlay">
+        <h3>Chesse Burger</h3>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button class="order-btn">Order Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS DINÁMICOS (CATÁLOGO) -->
+<section id="productos-dinamicos">
+  <h2 style="text-align:center; margin-top:24px;">Nuestros Productos</h2>
+  <div id="productos-catalogo" class="cards-row"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h1>ABOUT</h1>
+  <div class="about-content">
+    <div class="about-img">
+      <img src="./images/about.png" alt="About">
+    </div>
+    <div class="about-text">
+      <h2>Delicious Burger</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam accusamus exercitationem ut. Non assumenda nihil tempore minima consequatur corrupti numquam quia dolorum laborum praesentium vero commodi ex velit expedita, omnis adipisci? Exercitationem consequatur ducimus praesentium dolores rerum voluptatibus, nam illo quas modi deleniti iusto laboriosam adipisci enim excepturi, cupiditate quidem neque tempora sunt animi natus aliquid. Fugiat eligendi molestiae magnam vero dicta est praesentium unde ducimus eveniet commodi alias, pariatur quis quod saepe sed accusamus porro nemo doloribus cumque quos quo nihil! Numquam explicabo odit accusamus laudantium molestiae. Ipsum culpa dolor sequi dolore doloribus aperiam, earum maxime alias voluptates magni.</p>
+      <div id="readmorebtn"><button>Read More...</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-main">
+      <div class="footer-col">
+        <a id="logo2"><img src="./images/logo.png" alt="" width="30px">Burger</a>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, libero.</p>
+        <address>
+          Karachi<br>Sindh<br>Pakistan
+        </address>
+        <p><i class="fa-solid fa-phone"></i> Phone: <strong>+0000000000000000</strong></p>
+        <p><i class="fa-solid fa-envelope"></i> Email: <strong>example@gmail.com</strong></p>
+      </div>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, aperiam.</p>
+        <ul>
+          <li><a href="#">Pizza</a></li>
+          <li><a href="#">Fried chicken</a></li>
+          <li><a href="#">Fries</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Social Links</h4>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, minus.</p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="footer-bottom">
+    <span class="copyright">
+      &copy; Copyright <strong>Burger</strong>. All Rights reserved
+    </span>
+    <span class="credits">
+      Designed By <a href="#">NoName coding</a>
+    </span>
+  </div>
+</footer>
+<script src="js/checkout.js"></script>
+<script src="js/admin.js"></script>
+  <script src="js/cart.js"></script>
+
+</body>
+</html>
