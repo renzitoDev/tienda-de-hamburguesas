@@ -71,7 +71,8 @@ window.sumarCantidad = sumarCantidad;
 window.restarCantidad = restarCantidad;
 
 window.eliminarProdCart = eliminarProdCart;
-window.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('DOMContentLoaded', async function(){
+  await validarCartContraBD();
   renderCarrito();
   document.getElementById("ir-checkout").onclick = function(){
     window.location.href = "checkout.html";

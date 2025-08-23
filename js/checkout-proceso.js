@@ -64,6 +64,26 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
+async function validarCartContraBD() {
+  // 1. Fetch productos válidos de la BD
+  const res = await fetch(BASE_URL + "productos");
+  const productosBD = await res.json();
+  const idsValidos = new Set(productosBD.map(p=>p.id));
+
+  // 2. Filtra el carrito para dejar solo productos existentes
+  const cart = getCart();
+  const cartValido = cart.filter(item => idsValidos.has(item.id));
+
+  // Si quitó algún producto, avisa y actualiza storage
+  if (cartValido.length !== cart.length) {
+    saveCart(cartValido);
+    alert("Algunos productos de tu carrito ya no existen en la tienda y fueron eliminados.");
+    renderSummaryProducts && renderSummaryProducts(); // opcional, si tienes una función para re-render resumen
+  }
+  return cartValido;
+}
+
+
 // ============ ENVÍO DEL PEDIDO CORRECTO POR SUBMIT ============
 document.querySelector('.checkout-form').addEventListener('submit', async function(e){
   e.preventDefault();
@@ -80,6 +100,15 @@ document.querySelector('.checkout-form').addEventListener('submit', async functi
     alert('Completa todos los datos requeridos.');
     return;
   }
+
+  const carritoLimpio = await validarCartContraBD();
+  if (carritoLimpio.length === 0) {
+    alert("Tu carrito quedó vacío porque tus productos ya no existen. Por favor, vuelve al menú y selecciona productos válidos.");
+    clearCart();
+    renderSummaryProducts && renderSummaryProducts();
+    return;
+  }
+
   // Calcula totales
   const valores = calcularTotal(getCart().reduce((a,p)=>a+p.precio*p.cantidad,0));
   const productos = getCart().map(prod => ({
@@ -126,6 +155,7 @@ document.querySelector('.checkout-form').addEventListener('submit', async functi
 
   // 2. Crea pedido
   try {
+    console.log("Productos a enviar:", productos);
     const pedidoRes = await fetch(BASE_URL + 'pedidos', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
